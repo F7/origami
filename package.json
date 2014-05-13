@@ -3,7 +3,7 @@
   "theme": "syntax",
   "version": "0.0.0",
   "description": "Origami Syntax Theme",
-  "repository": "https://github.com/atom/origami",
+  "repository": "https://github.com/F7/origami",
   "license": "MIT",
   "engines": {
     "atom": ">0.50.0"
