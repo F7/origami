@@ -1,1 +1,364 @@
-@import "./stylesheets/base.less";
+// These colors are specific to the theme. Do not use in a package!
+
+@very-light-gray: #dddddd;
+@light-gray: #999999;
+@gray: #888888;
+@dark-gray: #333;
+@very-dark-gray: #181818;
+
+
+@cyan: #66cbff;
+@blue: #6682fe;
+@purple: #d06fff;
+@green: #66cb00;
+@red: #fC3C3C;
+@orange: #fe9900;
+@light-orange: #ffcc00;
+
+@yellow: #c1c13e;
+@light-green: #7bca2b;
+@pink: #ff009a;
+
+
+
+// General colors
+@syntax-text-color: @very-light-gray;
+@syntax-cursor-color: white;
+@syntax-selection-color: lighten(@dark-gray, 10%);
+@syntax-background-color: @very-dark-gray;
+
+// Guide colors
+@syntax-wrap-guide-color: @very-dark-gray;  //border-color
+@syntax-indent-guide-color: @very-dark-gray;  //indent-line
+@syntax-invisible-character-color: @gray;
+
+// For find and replace markers
+@syntax-result-marker-color: @light-gray;
+@syntax-result-marker-color-selected: white;
+
+// Gutter colors
+@syntax-gutter-text-color: @gray;
+@syntax-gutter-text-color-selected: @syntax-gutter-text-color;
+@syntax-gutter-background-color: @very-dark-gray;
+@syntax-gutter-background-color-selected: @dark-gray;
+
+// For git diff info. i.e. in the gutter
+@syntax-color-renamed: @blue;
+@syntax-color-added: @green;
+@syntax-color-modified: @orange;
+@syntax-color-removed: @red;
+
+
+
+
+.editor-colors {
+  background-color: @syntax-background-color;
+  color: @syntax-text-color;
+}
+
+.editor {
+  background-color: @syntax-background-color;
+  color: @syntax-text-color;
+
+  .wrap-guide {
+    background-color: @syntax-wrap-guide-color;
+  }
+
+  .indent-guide {
+    color: @syntax-indent-guide-color;
+  }
+
+  .invisible-character {
+    color: @syntax-invisible-character-color;
+  }
+
+  .gutter {
+    background-color: @syntax-gutter-background-color;
+    color: @syntax-gutter-text-color;
+
+    .line-number {
+      &.cursor-line {
+        background-color: @syntax-gutter-background-color-selected;
+        color: @syntax-gutter-text-color-selected;
+      }
+
+      &.cursor-line-no-selection {
+        color: @syntax-gutter-text-color-selected;
+      }
+    }
+  }
+
+  .gutter .line-number.folded,
+  .gutter .line-number:after,
+  .fold-marker:after {
+    color: @light-gray;
+  }
+
+  .invisible {
+    color: @syntax-text-color;
+  }
+
+  .cursor {
+    color: @syntax-cursor-color;
+  }
+
+  .selection .region {
+    background-color: @syntax-selection-color;
+  }
+}
+
+.editor .search-results .marker .region {
+  background-color: transparent;
+  border: 1px solid @syntax-result-marker-color;
+}
+
+.editor .search-results .marker.current-result .region {
+  border: 1px solid @syntax-result-marker-color-selected;
+}
+
+.comment {
+  color: @light-gray;
+}
+
+.entity {
+  &.name.type {
+    color: @pink;
+    text-decoration: underline;
+  }
+
+  &.other.inherited-class {
+    color: @green;
+  }
+}
+
+.keyword {
+  color: @purple;
+
+  &.control {
+    color: @purple;
+  }
+
+  &.operator {
+    color: @syntax-text-color;
+  }
+
+  &.other.special-method {
+    color: @blue;
+  }
+
+  &.other.unit {
+    color: @pink;
+  }
+}
+
+.storage {
+  color: @purple;
+}
+
+.constant {
+  color: @light-green;
+
+  &.character.escape {
+    color: @cyan;
+  }
+
+  &.numeric {
+    color: @light-green;
+  }
+
+  &.other.color {
+    color: @cyan;
+  }
+
+  &.other.symbol {
+    color: @green;
+  }
+}
+
+.variable {
+  color: @cyan;
+
+  &.interpolation {
+    color: darken(@cyan, 10%);
+  }
+
+  &.parameter.function {
+    color: @syntax-text-color;
+  }
+}
+
+.invalid.illegal {
+  background-color: @red;
+  color: @syntax-background-color;
+}
+
+.string {
+  color: @yellow;
+
+
+  &.regexp {
+    color: @cyan;
+
+    .source.ruby.embedded {
+      color: @orange;
+    }
+  }
+
+  &.other.link {
+    color: @red;
+  }
+}
+
+.punctuation {
+  &.definition {
+    &.comment {
+      color: @light-gray;
+    }
+
+    &.string,
+    &.variable,
+    &.parameters,
+    &.array {
+      color: @syntax-text-color;
+    }
+
+    &.heading,
+    &.identity {
+      color: @blue;
+    }
+
+    &.bold {
+      color: @light-orange;
+      font-style: bold;
+    }
+
+    &.italic {
+      color: @purple;
+      font-style: italic;
+    }
+  }
+
+  &.section.embedded {
+    color: darken(@red, 10%);
+  }
+
+}
+
+.support {
+  &.class {
+    color: @pink;
+  }
+
+  &.function  {
+    color: @cyan;
+
+    &.any-method {
+      color: @blue;
+    }
+  }
+}
+
+.entity {
+  &.name.function {
+    color: @blue;
+  }
+
+  &.name.class, &.name.type.class {
+    color: @pink;
+  }
+
+  &.name.section {
+    color: @blue;
+  }
+
+  &.name.tag {
+    color: @pink;
+    text-decoration: underline;
+  }
+
+  &.other.attribute-name {
+    color: @light-green;
+
+    &.id {
+      color: @blue;
+    }
+  }
+}
+
+.meta {
+  &.class {
+    color: @pink;
+  }
+
+  &.link {
+    color: @orange;
+  }
+
+  &.require {
+    color: @blue;
+  }
+
+  &.selector {
+    color: @purple;
+  }
+
+  &.separator {
+    background-color: @gray;
+    color: @syntax-text-color;
+  }
+}
+
+.none {
+  color: @syntax-text-color;
+}
+
+.markup {
+  &.bold {
+    color: @orange;
+    font-style: bold;
+  }
+
+  &.changed {
+    color: @purple;
+  }
+
+  &.deleted {
+    color: @red;
+  }
+
+  &.italic {
+    color: @purple;
+    font-style: italic;
+  }
+
+  &.heading .punctuation.definition.heading {
+    color: @blue;
+  }
+
+  &.inserted {
+    color: @green;
+  }
+
+  &.list {
+    color: @red;
+  }
+
+  &.quote {
+    color: @orange;
+  }
+
+  &.raw.inline {
+    color: @green;
+  }
+}
+
+.source.gfm .markup {
+  -webkit-font-smoothing: auto;
+  &.heading {
+    color: @green;
+  }
+}
+
+.editor.mini .scroll-view {
+  padding-left: 1px;
+}
