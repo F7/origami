@@ -1,9 +1,9 @@
 {
-  "name": "origami-syntax",
+  "name": "Origami",
   "theme": "syntax",
   "version": "0.0.0",
-  "description": "A short description of your syntax theme",
-  "repository": "https://github.com/atom/origami-syntax",
+  "description": "Origami Syntax Theme",
+  "repository": "https://github.com/atom/origami",
   "license": "MIT",
   "engines": {
     "atom": ">0.50.0"
